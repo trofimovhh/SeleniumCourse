@@ -1,4 +1,7 @@
-﻿using OpenQA.Selenium;
+﻿using AventStack.ExtentReports;
+using AventStack.ExtentReports.Reporter;
+using NUnit.Framework.Interfaces;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
@@ -9,9 +12,29 @@ public class ActionsOnElements
 {
 	private IWebDriver driver;
 
+	private ExtentReports extent;
+
+	[OneTimeSetUp]
+	public void OneTimeSetUp()
+	{
+		extent = new ExtentReports();
+		var spark = new ExtentSparkReporter(
+			@"C:\Users\user\RiderProjects\SeleniumCourse\SeleniumCourse\Reports\Report.html");
+		extent.AttachReporter(spark);
+	}
+
+	[OneTimeTearDown]
+	public void OneTimeTearDown()
+	{
+		extent.Flush();
+	}
+
+	private ExtentTest test;
+
 	[SetUp]
 	public void SetUp()
 	{
+		test = extent.CreateTest(TestContext.CurrentContext.Test.Name);
 		driver = new ChromeDriver();
 	}
 
@@ -19,8 +42,24 @@ public class ActionsOnElements
 	public void TearDown()
 	{
 		driver.Quit();
+		var status = TestContext.CurrentContext.Result.Outcome.Status;
+		var stacktrace = string.IsNullOrEmpty(TestContext.CurrentContext.Result.StackTrace)
+			? ""
+			: string.Format("{0}", TestContext.CurrentContext.Result.StackTrace);
+		Status logstatus;
+		switch (status)
+		{
+			case TestStatus.Failed:
+				logstatus = Status.Fail;
+				break;
+			default:
+				logstatus = Status.Pass;
+				break;
+		}
+
+		test.Log(logstatus, "Test ended with " + logstatus + stacktrace);
 	}
-	
+
 	[Test]
 	public void ClickTest()
 	{
@@ -30,7 +69,6 @@ public class ActionsOnElements
 		var clickMessageText = driver.FindElement(By.Id("dynamicClickMessage")).Text;
 		Assert.AreEqual(clickMessageText, "You have done a dynamic click");
 	}
-
 
 	[Test]
 	public void TextInput()
@@ -91,7 +129,6 @@ public class ActionsOnElements
 			.Perform();
 		Assert.That(dropArea.Text.Contains("Dropped!"));
 	}
-
 
 	[Test]
 	public void SelectTest()
@@ -160,18 +197,6 @@ public class ActionsOnElements
 		driver.SwitchTo().Window(otherWindows.First());
 		var newWindowHeading = driver.FindElement(By.Id("sampleHeading"));
 		Assert.That(newWindowHeading.Text.Equals("This is a sample page"));
-	}
-
-
-	[Test]
-	public void DoubleClickTest()
-	{
-		driver.Navigate().GoToUrl("https://demoqa.com/buttons");
-		var doubleClickButton = driver.FindElement(By.Id("doubleClickBtn"));
-		new Actions(driver).DoubleClick(doubleClickButton).Build().Perform();
-		var doubleClickMessage = driver.FindElement(By.Id("doubleClickMessage"));
-		Console.WriteLine(doubleClickMessage.Text);
-		doubleClickMessage.Text.Contains("You have done a double click");
 	}
 
 	[Test]
