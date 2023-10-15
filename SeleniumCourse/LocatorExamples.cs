@@ -26,4 +26,22 @@ public class LocatorExamples
 		// Finding "Search" button
 		var searchButton = driver.FindElement(By.XPath("//*[@id='searchButton']"));
 	}
+
+	[Test]
+	public void CssLocatorTest()
+	{
+		driver.Navigate().GoToUrl("https://www.seek.co.nz/");
+		// Finding "Profile" link
+		var css = 
+			driver.FindElement(By.CssSelector("span[data-title='Profile']"));
+	}
+	
+	[Test]
+	public void XpathLocatorTest()
+	{
+		driver.Navigate().GoToUrl("https://www.seek.co.nz/");
+		// Finding "Employer site" link
+		var xPath = 
+			driver.FindElement(By.XPath("//*[@data-automation='employers_link']"));
+	}
 }

@@ -3,5 +3,6 @@
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::61563EC4-C0DD-44C2-A7DF-F93B4076B15C::net7.0::SeleniumCourse.Tests.Test1&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::61563EC4-C0DD-44C2-A7DF-F93B4076B15C::net7.0::SeleniumCourse.ActionsOnElements&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::61563EC4-C0DD-44C2-A7DF-F93B4076B15C::net7.0::SeleniumCourse.LocatorExamples.XpathLocatorTest&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
