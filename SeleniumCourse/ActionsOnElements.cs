@@ -29,12 +29,12 @@ public class ActionsOnElements
 		extent.Flush();
 	}
 
-	private ExtentTest test;
+	private ExtentTest report;
 
 	[SetUp]
 	public void SetUp()
 	{
-		test = extent.CreateTest(TestContext.CurrentContext.Test.Name);
+		report = extent.CreateTest(TestContext.CurrentContext.Test.Name);
 		driver = new ChromeDriver();
 	}
 
@@ -57,7 +57,7 @@ public class ActionsOnElements
 				break;
 		}
 
-		test.Log(logstatus, "Test ended with " + logstatus + stacktrace);
+		report.Log(logstatus, "Test ended with " + logstatus + stacktrace);
 	}
 
 	[Test]
@@ -120,13 +120,17 @@ public class ActionsOnElements
 		driver.Navigate().GoToUrl("https://demoqa.com/droppable");
 		var dragElement = driver.FindElement(By.Id("draggable"));
 		var dropArea = driver.FindElement(By.Id("droppable"));
+		report.Log(Status.Info, "Verifying the target area name for element drop");
 		Assert.That(dropArea.Text.Contains("Drop here"));
+		report.Log(Status.Info, "Creating a sequence of actions");
 		new Actions(driver)
 			.ClickAndHold(dragElement)
 			.MoveToElement(dropArea)
 			.Release(dragElement)
 			.Build()
 			.Perform();
+		report.Log(Status.Info, "The sequence of actions has been has been performed");
+		report.Log(Status.Info, "Verifying that the element has been dropped");
 		Assert.That(dropArea.Text.Contains("Dropped!"));
 	}
 
