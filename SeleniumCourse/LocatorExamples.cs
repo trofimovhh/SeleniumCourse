@@ -1,13 +1,27 @@
-﻿using OpenQA.Selenium;
+﻿using AventStack.ExtentReports.Model;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
 namespace SeleniumCourse;
 
 public class LocatorExamples
 {
-	private IWebDriver driver = new ChromeDriver();
+	private IWebDriver driver;
+	
+	[SetUp]
+    public void SetUp()
+    {
+        driver = new ChromeDriver();
+    }
 
-	[Test]
+	[TearDown]
+	public void TearDown()
+	{
+		driver.Close();
+		driver.Quit();
+		driver.Dispose();
+	}
+        [Test]
 	public void LocatorsTest()
 	{
 		driver.Navigate().GoToUrl("https://www.seek.co.nz/");
@@ -19,8 +33,8 @@ public class LocatorExamples
 		var body = driver.FindElement(By.TagName("body"));
 		// Finding "SEEK" button
 		var seekButton = driver.FindElement(By.CssSelector("button[type='submit']"));
-		// Finding "Protect yourself online" link
-		var protectLink = driver.FindElement(By.LinkText("Protect yourself online"));
+        // Finding "Security & Privacy" link
+        var protectLink = driver.FindElement(By.LinkText("Security & Privacy"));
 		// Finding "Terms & conditions" link
 		var termsConditionsLink = driver.FindElement(By.PartialLinkText("conditions"));
 		// Finding "Search" button

@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\RiderProjects\\SeleniumCourse\\SeleniumCourse\\SeleniumCourse.csproj": {}
+    "C:\\Users\\user\\source\\repos\\SeleniumCourse0206\\SeleniumCourse\\SeleniumCourse.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\RiderProjects\\SeleniumCourse\\SeleniumCourse\\SeleniumCourse.csproj": {
+    "C:\\Users\\user\\source\\repos\\SeleniumCourse0206\\SeleniumCourse\\SeleniumCourse.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\RiderProjects\\SeleniumCourse\\SeleniumCourse\\SeleniumCourse.csproj",
+        "projectUniqueName": "C:\\Users\\user\\source\\repos\\SeleniumCourse0206\\SeleniumCourse\\SeleniumCourse.csproj",
         "projectName": "SeleniumCourse",
-        "projectPath": "C:\\Users\\user\\RiderProjects\\SeleniumCourse\\SeleniumCourse\\SeleniumCourse.csproj",
+        "projectPath": "C:\\Users\\user\\source\\repos\\SeleniumCourse0206\\SeleniumCourse\\SeleniumCourse.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\RiderProjects\\SeleniumCourse\\SeleniumCourse\\obj\\",
+        "outputPath": "C:\\Users\\user\\Source\\Repos\\SeleniumCourse0206\\SeleniumCourse\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
           "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -34,6 +39,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -46,39 +56,43 @@
             },
             "ExtentReports": {
               "target": "Package",
-              "version": "[5.0.1, )"
+              "version": "[5.0.2, )"
             },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
-              "version": "[17.6.0, )"
+              "version": "[17.10.0, )"
             },
             "NUnit": {
               "target": "Package",
-              "version": "[3.13.3, )"
+              "version": "[4.1.0, )"
             },
             "NUnit.Analyzers": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[3.6.1, )"
+              "version": "[4.2.0, )"
             },
             "NUnit3TestAdapter": {
               "target": "Package",
-              "version": "[4.4.2, )"
+              "version": "[4.5.0, )"
             },
             "Selenium.Support": {
               "target": "Package",
-              "version": "[4.14.0, )"
+              "version": "[4.21.0, )"
             },
             "Selenium.WebDriver": {
               "target": "Package",
-              "version": "[4.14.0, )"
+              "version": "[4.21.0, )"
             },
             "Selenium.WebDriver.ChromeDriver": {
               "target": "Package",
-              "version": "[119.0.6045.10500, )"
+              "version": "[125.0.6422.14100, )"
             },
             "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[3.2.0, )"
+              "version": "[6.0.2, )"
             }
           },
           "imports": [
@@ -97,7 +111,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
         }
       }
     }

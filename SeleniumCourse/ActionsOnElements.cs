@@ -41,7 +41,9 @@ public class ActionsOnElements
 	[TearDown]
 	public void TearDown()
 	{
+		driver.Close();
 		driver.Quit();
+		driver.Dispose();
 		var status = TestContext.CurrentContext.Result.Outcome.Status;
 		var stacktrace = string.IsNullOrEmpty(TestContext.CurrentContext.Result.StackTrace)
 			? ""
@@ -67,7 +69,7 @@ public class ActionsOnElements
 		var clickMeButton = driver.FindElement(By.XPath("//button[text()='Click Me']"));
 		clickMeButton.Click();
 		var clickMessageText = driver.FindElement(By.Id("dynamicClickMessage")).Text;
-		Assert.AreEqual(clickMessageText, "You have done a dynamic click");
+		Assert.That(clickMessageText.Equals("You have done a dynamic click"));
 	}
 
 	[Test]
@@ -173,8 +175,6 @@ public class ActionsOnElements
 		alert.Accept();
 		var confirmResult = driver.FindElement(By.Id("confirmResult"));
 		Assert.That(confirmResult.Text.Equals("You selected Ok"));
-		var frameElement = driver.FindElement(By.TagName("iframe"));
-		frameElement.Click();
 	}
 
 	[Test]

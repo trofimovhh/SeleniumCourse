@@ -17,6 +17,7 @@ public class Tests
 	{
 		// Closing the browser
 		driver.Quit();
+		driver.Dispose();
 	}
 	[Test]
 	public void Test1()
